@@ -15,4 +15,3 @@ RUN groupadd -r prof
 RUN useradd -m -r -g prof prof
 RUN chown -R prof:prof /code
 #switch to the new user account
-USER prof
