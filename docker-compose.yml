@@ -1,0 +1,30 @@
+# by default, the Ghost image will use SQLite (and thus requires no separate database container)
+# we have used MySQL here merely for demonstration purposes (especially environment-variable-based configuration)
+
+#Adapted Ghost from https://hub.docker.com/_/ghost/
+
+version: '3.1'
+
+services:
+  datalab:
+    restart: always
+    build: .
+    expose:
+      - 8080
+    ports:
+      - 8081:8081
+    environment:
+      HANDOUT: 1
+      VIRTUAL_HOST: datalab1.bryancdixon.com
+      VIRTUAL_PORT: 8080
+      LETSENCRYPT_HOST: datalab1.bryancdixon.com
+      LETSENCRYPT_EMAIL: me@bryancdixon.com
+    volumes:
+      - ./datalab/:/code/
+    command: ./start.sh
+
+
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}
