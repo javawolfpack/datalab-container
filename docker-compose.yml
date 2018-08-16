@@ -10,13 +10,13 @@ services:
     restart: always
     build: .
     expose:
-      - 8080
+      - 9090
     ports:
-      - 8081:8081
+      - 9091:9091
     environment:
       HANDOUT: 1
       VIRTUAL_HOST: datalab1.bryancdixon.com
-      VIRTUAL_PORT: 8080
+      VIRTUAL_PORT: 9090
       LETSENCRYPT_HOST: datalab1.bryancdixon.com
       LETSENCRYPT_EMAIL: me@bryancdixon.com
     volumes:
