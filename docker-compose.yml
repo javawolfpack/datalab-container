@@ -10,15 +10,15 @@ services:
     restart: always
     build: .
     expose:
-      - 9090
+      - 9090 #changed the default request port in Contest.pm, this should match it
     ports:
-      - 9091:9091
+      - 9091:9091 #map result port to host set in Contest.pm
     environment:
-      HANDOUT: 1
-      VIRTUAL_HOST: datalab1.bryancdixon.com
-      VIRTUAL_PORT: 9090
-      LETSENCRYPT_HOST: datalab1.bryancdixon.com
-      LETSENCRYPT_EMAIL: me@bryancdixon.com
+      HANDOUT: 1 #First Run 1 and 0 After... 1 cleanallfiles and remakes
+      VIRTUAL_HOST: example.com
+      VIRTUAL_PORT: 9090 #needs to match request port
+      LETSENCRYPT_HOST: example.com
+      LETSENCRYPT_EMAIL: you@example.com
     volumes:
       - ./datalab/:/code/
     command: ./start.sh
